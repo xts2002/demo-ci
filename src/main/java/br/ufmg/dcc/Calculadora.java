@@ -1,13 +1,29 @@
 package br.ufmg.dcc;
 
-public class Calculadora {
+public class SimpleCalculator {
 
-  public int soma(int x, int y) {
+  public int addition(int x, int y) {
     return x + y;
   }
 
-  public int subtrai(int x, int y) {
+  public int subtraction(int x, int y) {
     return x - y;
+  }
+  
+  public int multiplication(int x, int y){
+    return x * y;
+  }
+  
+  public int division(int x, int y){
+    return x / y;
+  }
+  
+  public int factorial(int x){
+    int result = 1;
+    for(i=2; i<=x; i++){
+       result *= i;
+    }
+    return result;
   }
 
 }
