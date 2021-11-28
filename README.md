@@ -6,18 +6,15 @@ For more details on **Continous Integration (CI)**, You may find several tutoria
 
 Even though there are many different **CI** servers, in this guide we will use the native **CI** available in GitHub. In **GitHub Actions** we can configure a CI server.
 
-<div width=70%>
 ![GitHub Actions](./images/ci-github-actions.png)
-</div>
 
-O Github Actions permite executar programas externos assim que determinados eventos forem detectados em um repositório GitHub. Como nosso intuito é configurar um servidor CI, iremos usar o GitHub Actions para compilar todo o código (_build_) do projeto e rodar seus testes de unidade quando um Pull Request (PR) for aberto no repositório, conforme ilustrado a seguir.
+GitHub Actions allows us to execute external applications when GitHub detects pre-defined events in a repository. Our goal is to setup a CI server to compile our source code and run the test cases when a Pull Request (PR) is open (as shown in the diagram bellow). 
 
+![CI Pull Request Diagram](./images/ci-pull-request-diagram.png)
 
-<p align="center">
-    <img width="70%" src="https://user-images.githubusercontent.com/7620947/110053018-50f77500-7d37-11eb-9ca1-3de609b93584.png" />
-</p> 
+## Code Example
 
-## Programa de Exemplo
+We are going to use a simple Java code as a basis for our CI server. The code is available at this repository in the "src" folder, called [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java).
 
 Para ilustrar o uso do servidor de CI, vamos usar um programa Java muito simples, que já foi criado e está disponível neste mesmo repositório ([Calculadora.java](https://github.com/aserg-ufmg/demo-ci/blob/main/src/main/java/br/ufmg/dcc/Calculadora.java)):
 
