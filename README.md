@@ -33,20 +33,19 @@ public class SimpleCalculator {
 When we create a PR to this repository, the CI server will automatically compile/build this program and run the unit test cases. We also create a simple (and incomplete) test case in this repository called [SimpleCalculatorTest.java](./src/test/java/br/ufmg/dcc/SimpleCalculatorTest.java).
 
 ```java
-public class CalculadoraTest {
-
+public class SimpleCalculatorTest {
   @Test
-  public void testeSoma1() {
-    Calculadora calc = new Calculadora();
-    int resultadoEsperado = 5;
-    int resultadoRetornado = calc.soma(2,3);
-    assertEquals(resultadoEsperado, resultadoRetornado);
+  public void testAddition1() {
+    SimpleCalculator calc = new SimpleCalculator();
+    int expected = 5;
+    int result = calc.addition(2,3);
+    assertEquals(expected, result);
   }
 
   @Test
-  public void testeSoma2() {
-    Calculadora calc = new Calculadora();
-    assertEquals(10, calc.soma(4,6));
+  public void testAddition2() {
+    SimpleCalculator calc = new SimpleCalculator();
+    assertEquals(-2, calc.soma(4,-6));
   }
 }
 ```
