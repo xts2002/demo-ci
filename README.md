@@ -6,7 +6,7 @@ For more details on **Continous Integration (CI)**, You may find several tutoria
 
 Even though there are many different **CI** servers, in this guide we will use the native **CI** available in GitHub. In **GitHub Actions** we can configure a CI server.
 
-![GitHub Actions](./images/ci-github-actions.png | width:70%)
+![GitHub Actions](./images/ci-github-actions.png | width=70%)
 
 
 O Github Actions permite executar programas externos assim que determinados eventos forem detectados em um repositório GitHub. Como nosso intuito é configurar um servidor CI, iremos usar o GitHub Actions para compilar todo o código (_build_) do projeto e rodar seus testes de unidade quando um Pull Request (PR) for aberto no repositório, conforme ilustrado a seguir.
