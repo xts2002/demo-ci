@@ -20,7 +20,7 @@ public class SimpleCalculator {
   
   public int factorial(int x){
     int result = 1;
-    for(i=2; i<=x; i++){
+    for(int i=2; i<=x; i++){
        result *= i;
     }
     return result;
