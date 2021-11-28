@@ -14,24 +14,23 @@ GitHub Actions allows us to execute external applications when GitHub detects pr
 
 ## Code Example
 
-We are going to use a simple Java code as a basis for our CI server. The code is available at this repository in the "src" folder, called [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java).
+We are going to use a simple Java code as a basis for our CI server. The full source code is available at this repository in the "src" folder, called [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java).
 
-Para ilustrar o uso do servidor de CI, vamos usar um programa Java muito simples, que já foi criado e está disponível neste mesmo repositório ([Calculadora.java](https://github.com/aserg-ufmg/demo-ci/blob/main/src/main/java/br/ufmg/dcc/Calculadora.java)):
 
 ```java
-public class Calculadora {
+public class SimpleCalculator {
 
-  public int soma(int x, int y) {
+  public int addition(int x, int y) {
     return x + y;
   }
 
-  public int subtrai(int x, int y) {
+  public int subtraction(int x, int y) {
     return x - y;
   }
+  //... and other functions
 }
 ```
-
-Quando chegar um PR no repositório, o servidor de CI vai automaticamente realizar um _build_ desse programa e rodar o seguinte teste de unidade (também já disponível no repositório, veja em [CalculadoraTest.java](https://github.com/aserg-ufmg/demo-ci/blob/main/src/test/java/br/ufmg/dcc/CalculadoraTest.java)):
+When we create a PR to this repository, the CI server will automatically compile/build this program and run the unit test cases. We also create a simple (and incomplete) test case in this repository called [SimpleCalculatorTest.java](./src/test/java/br/ufmg/dcc/SimpleCalculatorTest.java).
 
 ```java
 public class CalculadoraTest {
