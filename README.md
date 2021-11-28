@@ -1,10 +1,10 @@
-# Demo-CI: Aula Prática sobre Servidores de Integração Contínua
+# Demo-CI: Hands-on Lecture on Continuous Integration Server
 
-Este repositório descreve um roteiro prático para configuração e uso de um **Servidor de Integração Contínua**. O objetivo é proporcionar ao aluno um primeiro contato real com essa prática de desenvolvimento de software.
+This repository presents a practical guide to setup and use a **Continous Integration (CI) Server**. The main objective of this guide is to provide students with a simple real first contact with this topic in Software Engineering.
 
-Se você ainda não sabe o que é **Integração Contínua** e também não entende o papel desempenhado por servidores de CI, recomendamos antes ler o [Capítulo 10](https://engsoftmoderna.info/cap10.html) do nosso livro texto ([Engenharia de Software Moderna](https://engsoftmoderna.info/cap10.html)).
+For more details on **Continous Integration (CI)**, You may find several tutorials and content by searching the Web. The [Atlassian CI/CD](https://www.atlassian.com/continuous-delivery/continuous-integration) webpage has a good background content on this topic.
 
-Apesar de existirem diversos servidores de integração contínua, neste roteiro iremos usar um recurso nativo do GitHub, chamado **GitHub Actions**, para configurar um servidor de CI.
+Even though there are many different **CI** servers, in this guide we will use the native **CI** available in GitHub. In **GitHub Actions** we can configure a CI server.
 
 <p align="center">
     <img width="70%" src="https://user-images.githubusercontent.com/7620947/109080916-232f8200-76e0-11eb-8d02-9ca9f518cea2.png" />
