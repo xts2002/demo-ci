@@ -50,29 +50,29 @@ public class SimpleCalculatorTest {
 }
 ```
 
-## Tarefa #1: Configurar o GitHub Actions
+## Task #1: Setting Up GitHub Actions
 
-#### Passo 1
+#### Step 1
 
-Antes de mais nada realize um fork deste repositório. Para isso, basta clicar no botão **Fork** no canto superior direito desta página.
+The very first thing to do is to fork this repository. Click on the **Fork** button on the top right corner of this page.
 
-Ou seja, você irá configurar um servidor de CI na sua própria cópia do repositório.
+Therefore, you will setup the CI server into your own copy of the repository.
 
-#### Passo 2
+#### Step 2
 
-Clone o repositório para sua máquina local, usando o seguinte comando (onde `<USER>` deve ser substituído pelo seu usuário no GitHub):
+Clone the repository into your local machine. You may use a Git Client for it or the following command line (where `<USER>` should be replaced by your GitHub user).
 
 ```bash
 git clone https://github.com/<USER>/demo-ci.git
 ```
 
-Em seguida, copie o código a seguir para um arquivo com o seguinte nome: `.github/workflows/actions.yaml`. Isto é, crie diretórios `.github` e depois `workflows` e salve o código abaixo no arquivo `actions.yaml`.
+Next, copy the code bellow to a file called `.github/workflows/actions.yaml` (do not forget the *dot* at the beggining).
 
 ```yaml
 name: Github CI
 on:
-  # Configura servidor de CI para executar o pipeline de tarefas abaixo (jobs) quando 
-  # um push ou pull request for realizado tendo como alvo a branch main
+  # Setup a CI Server to execute the jobs pipeline below when 
+  # a push or pull request is made at the main branch
   push:
     branches:
       - main
@@ -82,46 +82,47 @@ on:
 
 jobs:
   pipeline:
-    runs-on: ubuntu-latest # Os comandos serão executados em um sistema operacional Linux
+    runs-on: ubuntu-latest # Commands must be executed on a Linux Ubuntu OS
 
     steps:
       - name: Git Checkout
-        uses: actions/checkout@v2 # Faz o checkout do código recebido
+        uses: actions/checkout@v2 # Checkout the received code 
 
       - name: Set up JDK 1.8
-        uses: actions/setup-java@v1 # Configura o Java 1.8
+        uses: actions/setup-java@v1 # Set up Java 1.8
         with:
           java-version: 1.8
 
       - name: Build
-        run: mvn package -Dmaven.test.skip=true # Compila o código fonte
+        run: mvn package -Dmaven.test.skip=true # Build (compiles) the source code
 
       - name: Unit Test
-        run: mvn test # Executada os testes de unidade
+        run: mvn test # Executes the testing framework 
 ```
 
-Esse arquivo ativa e configura o GitHub Actions para -- toda vez que ocorrer um evento `push` ou `pull_request` tendo como alvo a branch principal do repositório -- realizar três tarefas (jobs):
+This file will activate and setup GitHub Actions to -- every time a `push` or `pull_request` event on this repository main brach -- run three jobs:
 
-- realizar o checkout do código;
-- realizar um build;
-- rodar os testes de unidade.
+- checkout the source code;
+- build the sources;
+- execute the testing framework.
 
-#### Passo 3
+#### Step 3
 
-Realize um `commit` e um `git push`, isto é:
+Make a `commit` and a `git push`. You may use a Git Client for it, or use the following command line:
 
 ```bash
 git add --all
-git commit -m "Configurando GitHub Actions"
+git commit -m "Setting up GitHub Actions"
 git push origin main
 ```
 
-#### Passo 4
+#### Step 4
 
-Quando o `push` chegar no repositório principal, o GitHub Actions iniciará automaticamente o fluxo de tarefas configurado no arquivo `actions.yaml` (isto é, build + testes).
+When your `push` reaches the main repository, GitHub Actions will begin to automatically execute the jobs listed inside the file `actions.yaml` (in our case, the checkout + build + tests). 
 
-Você pode acompanhar o status dessa execução clicando na aba Actions do seu repositório.
+You may watch over the status of the jobs being executed by clicking on the Actions tab inside your repository.
 
+![CI Jobs Inspection](./images/ci-setup-github-actions.png)
 <p align="center">
     <img width="80%" src="https://user-images.githubusercontent.com/7620947/110059807-b8b3bd00-7d43-11eb-9e57-e6ba1fa3457a.png" />
 </p>
