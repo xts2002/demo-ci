@@ -45,7 +45,7 @@ public class SimpleCalculatorTest {
   @Test
   public void testAddition2() {
     SimpleCalculator calc = new SimpleCalculator();
-    assertEquals(-2, calc.soma(4,-6));
+    assertEquals(-2, calc.addition(4,-6));
   }
 }
 ```
@@ -139,7 +139,7 @@ Change the function `add` in the file [SimpleCalculator.java](./src/main/java/br
 @@ -3,7 +3,7 @@ package br.ufmg.dcc;
  public class SimpleCalculator {
 
-   public int add(int x, int y) {
+   public int addition(int x, int y) {
 -    return x + y;
 +    return x + y + 1;
    }
