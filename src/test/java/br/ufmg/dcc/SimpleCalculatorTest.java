@@ -15,6 +15,6 @@ public class SimpleCalculatorTest {
   @Test
   public void testAddition2() {
     SimpleCalculator calc = new SimpleCalculator();
-    assertEquals(-2, calc.soma(4,-6));
+    assertEquals(-2, calc.addition(4,-6));
   }
 }
