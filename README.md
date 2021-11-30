@@ -123,45 +123,44 @@ When your `push` reaches the main repository, GitHub Actions will begin to autom
 You may watch over the status of the jobs being executed by clicking on the Actions tab inside your repository.
 
 ![CI Jobs Inspection](./images/ci-setup-github-actions.png)
-<p align="center">
-    <img width="80%" src="https://user-images.githubusercontent.com/7620947/110059807-b8b3bd00-7d43-11eb-9e57-e6ba1fa3457a.png" />
-</p>
 
-## Tarefa #2: Criando um PR com bug
+## Task #2: Creating a buggy Pull Request
 
+Now lets see our CI server performing in real live action. We will introduce a simple bug in out code example and send a Pull Request, to show 
 Para finalizar, vamos introduzir um pequeno bug no programa de exemplo e enviar um PR, para mostrar que ele será "barrado" pelo processo de integração (isto, o nosso teste vai "detectar" o bug e falhar).
 
-#### Passo 1
+#### Step 1
 
-Introduza um pequeno bug na função `soma` do arquivo [src/main/java/br/ufmg/dcc/Calculadora.java](https://github.com/rodrigo-brito/roteiro-github-actions/blob/main/src/main/java/br/ufmg/dcc/Calculadora.java). Por exemplo, basta alterar a linha 6, alterando o retorno da função para `x + y + 1`, como apresentado abaixo.
+Change the function `add` in the file [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java] to work incorrectly (i.e., we are introducing a defect on it). For example, we can change line 6, and modify the return to `x + y + 1`, as detailed bellow.
 
 ```diff
---- a/src/main/java/br/ufmg/dcc/Calculadora.java
-+++ b/src/main/java/br/ufmg/dcc/Calculadora.java
+--- a/src/main/java/br/ufmg/dcc/SimpleCalculator.java
++++ b/src/main/java/br/ufmg/dcc/SimpleCalculator.java
 @@ -3,7 +3,7 @@ package br.ufmg.dcc;
- public class Calculadora {
+ public class SimpleCalculator {
 
-   public int soma(int x, int y) {
+   public int add(int x, int y) {
 -    return x + y;
 +    return x + y + 1;
    }
 
-   public int subtrai(int x, int y) {
+   public int subtraction(int x, int y) {
 ```
 
-#### Passo 2
+#### Step 2
 
-Após modificar o código, você deve criar um novo branch, realizar um `commit` e `push`:
+After modifying the source, we create a new branch and commit-push to it. Use a Git Client or the command line:
 
 ```bash
-git checkout -b bug
+git checkout -b buggy
 git add --all
-git commit -m "Incluindo alterações na função soma"
-git push origin bug
+git commit -m "Changing function add"
+git push origin buggy
 ```
 
-#### Passo 3
+#### Step 3
 
+Now, create a Pull Request (PR) with your changes. 
 Em seguida, crie um Pull Request (PR) com sua modificação. Para isso, basta acessar a seguinte URL em seu navegador: `https://github.com/<USER>/demo-ci/compare/main...bug`, onde `<USER>` deve ser substituido pelo seu usuário no GitHub. Nessa janela, você pode conferir as modificações feitas e incluir uma pequena descrição no PR.
 
 <p align="center">
