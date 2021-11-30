@@ -160,21 +160,22 @@ git push origin buggy
 
 #### Step 3
 
-Now, create a Pull Request (PR) with your changes. 
-Em seguida, crie um Pull Request (PR) com sua modificação. Para isso, basta acessar a seguinte URL em seu navegador: `https://github.com/<USER>/demo-ci/compare/main...bug`, onde `<USER>` deve ser substituido pelo seu usuário no GitHub. Nessa janela, você pode conferir as modificações feitas e incluir uma pequena descrição no PR.
+Now, create a Pull Request (PR) with your changes. You may click on the Pull Request tab on your GitHub repository and manually navigate the options to create a PR from your buggy branch to your main branch. Or just type the following URL in your browser: `https://github.com/<USER>/demo-ci/compare/main...buggy`, where <USER> should be replaced for your GitHub user. You will see the comparison between the differences of both branches, and write a description for your PR.
 
+![CI Creating a PR](./images/ci-creating-pull-request.png)
 <p align="center">
     <img width="70%" src="https://user-images.githubusercontent.com/7620947/111704705-5b793a80-881e-11eb-8422-22d51bde6b19.png" />
 </p>
 
-Após finalizar a criação do Pull Request, será iniciada nossa pipeline, ou seja, o próprio GitHub vai fazer o build do sistema e rodar seus testes (como na tarefa #1). Porém, dessa vez os testes não vão passar, como mostrado abaixo:
+After you create the Pull Request, the job pipeline we defined in GitHub Actions will be triggered. Therefore, GitHub itself will build the system and run the tests (just like it did in Task #1). However, this time the tests will fail, as shown in the figure below.
 
+![CI Checks Failed](./images/ci-checks-failed.png)
 <p align="center">
     <img width="70%" src="https://user-images.githubusercontent.com/7620947/111704932-a85d1100-881e-11eb-8d3b-31f34bafa986.png" />
 </p>
 
-**RESUMINDO**: O Servidor de CI conseguiu alertar, de forma automática, tanto o autor do PR como o integrador de que existe um problema no código submetido, o que impede que ele seja integrado no branch principal do repositório.
+**SUMARIZING**: The CI Server managed to automatically warn both the PR author and the integrator that there exists a problem in the submitted code.
 
-## Créditos
+## Credits
 
-Este roteiro foi elaborado por **Rodrigo Brito**, aluno de mestrado do DCC/UFMG, como parte das suas atividades na disciplina Estágio em Docência, cursada em 2020/2, sob orientação do **Prof. Marco Tulio Valente**.
+This guide was conceptualized and originally written by **Rodrigo Brito**, a MSc student in DCC/UFMG in Feb/2020, under the advisement of **Prof. Marco Túlio Valente**. This guide was translated and adapted to English by **Prof. Henrique Rocha**, at Loyola University Maryland, in Nov/2021. 
