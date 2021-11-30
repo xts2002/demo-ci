@@ -131,7 +131,7 @@ Para finalizar, vamos introduzir um pequeno bug no programa de exemplo e enviar 
 
 #### Step 1
 
-Change the function `add` in the file [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java) to work incorrectly (i.e., we are introducing a defect on it). For example, we can change line 6, and modify the return to `x + y + 1`, as detailed below.
+Change the function `addition` in the file [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java) to work incorrectly (i.e., we are introducing a defect on it). For example, we can change line 6, and modify the return to `x + y + 1`, as detailed below.
 
 ```diff
 --- a/src/main/java/br/ufmg/dcc/SimpleCalculator.java
@@ -154,7 +154,7 @@ After modifying the source, we create a new branch and commit-push to it. Use a 
 ```bash
 git checkout -b buggy
 git add --all
-git commit -m "Changing function add"
+git commit -m "Changing function addition"
 git push origin buggy
 ```
 
