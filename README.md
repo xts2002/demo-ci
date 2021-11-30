@@ -126,8 +126,7 @@ You may watch over the status of the jobs being executed by clicking on the Acti
 
 ## Task #2: Creating a buggy Pull Request
 
-Now lets see our CI server performing in real live action. We will introduce a simple bug in out code example and send a Pull Request, to show 
-Para finalizar, vamos introduzir um pequeno bug no programa de exemplo e enviar um PR, para mostrar que ele será "barrado" pelo processo de integração (isto, o nosso teste vai "detectar" o bug e falhar).
+Now lets see our CI server performing in real live action. We will introduce a simple bug in our code example and send a Pull Request. The CI server will alert to the failed tests in our PR and will not automatically integrate it to the main branch.
 
 #### Step 1
 
