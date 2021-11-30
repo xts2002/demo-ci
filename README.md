@@ -1,14 +1,14 @@
 # Demo-CI: Hands-on Lecture on Continuous Integration Server
 
-This repository presents a practical guide to setup and use a **Continous Integration (CI) Server**. The main objective of this guide is to provide students with a simple real first contact with this topic in Software Engineering.
+This repository presents a practical guide to set up and use a **Continous Integration (CI) Server**. The main objective of this guide is to provide students with a simple real first contact with this topic in Software Engineering.
 
-For more details on **Continous Integration (CI)**, You may find several tutorials and content by searching the Web. The [Atlassian CI/CD](https://www.atlassian.com/continuous-delivery/continuous-integration) webpage has a good background content on this topic.
+For more details on **Continous Integration (CI)**, you may find several tutorials and content by searching the Web. The [Atlassian CI/CD](https://www.atlassian.com/continuous-delivery/continuous-integration) webpage has a good background content on this topic.
 
-Even though there are many different **CI** servers, in this guide we will use the native **CI** available in GitHub. In **GitHub Actions** we can configure a CI server.
+Even though there are many different **CI** servers, in this guide, we will use the native **CI** available in GitHub. In **GitHub Actions**, we can configure a CI server.
 
 ![GitHub Actions](./images/ci-github-actions.png)
 
-GitHub Actions allows us to execute external applications when GitHub detects pre-defined events in a repository. Our goal is to setup a CI server to compile our source code and run the test cases when a Pull Request (PR) is open (as shown in the diagram bellow). 
+GitHub Actions allows us to execute external applications when GitHub detects pre-defined events in a repository. Our goal is to set up a CI server to compile our source code and run the test cases when a Pull Request (PR) is open (as shown in the diagram below). 
 
 ![CI Pull Request Diagram](./images/ci-pull-request-diagram.png)
 
@@ -56,7 +56,7 @@ public class SimpleCalculatorTest {
 
 The very first thing to do is to fork this repository. Click on the **Fork** button on the top right corner of this page.
 
-Therefore, you will setup the CI server into your own copy of the repository.
+Therefore, you will set up the CI server into your own copy of the repository.
 
 #### Step 2
 
@@ -66,12 +66,12 @@ Clone the repository into your local machine. You may use a Git Client for it or
 git clone https://github.com/<USER>/demo-ci.git
 ```
 
-Next, copy the code bellow to a file called `.github/workflows/actions.yaml` (do not forget the *dot* at the beggining).
+Next, copy the code below to a file called `.github/workflows/actions.yaml` (do not forget the *dot* at the beginning).
 
 ```yaml
 name: Github CI
 on:
-  # Setup a CI Server to execute the jobs pipeline below when 
+  # Set up a CI Server to execute the jobs pipeline below when 
   # a push or pull request is made at the main branch
   push:
     branches:
@@ -100,7 +100,7 @@ jobs:
         run: mvn test # Executes the testing framework 
 ```
 
-This file will activate and setup GitHub Actions to -- every time a `push` or `pull_request` event on this repository main brach -- run three jobs:
+This file will activate and set up GitHub Actions to -- every time a `push` or `pull_request` event on this repository main brach -- run three jobs:
 
 - checkout the source code;
 - build the sources;
@@ -131,7 +131,7 @@ Para finalizar, vamos introduzir um pequeno bug no programa de exemplo e enviar 
 
 #### Step 1
 
-Change the function `add` in the file [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java] to work incorrectly (i.e., we are introducing a defect on it). For example, we can change line 6, and modify the return to `x + y + 1`, as detailed bellow.
+Change the function `add` in the file [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java) to work incorrectly (i.e., we are introducing a defect on it). For example, we can change line 6, and modify the return to `x + y + 1`, as detailed below.
 
 ```diff
 --- a/src/main/java/br/ufmg/dcc/SimpleCalculator.java
@@ -163,19 +163,13 @@ git push origin buggy
 Now, create a Pull Request (PR) with your changes. You may click on the Pull Request tab on your GitHub repository and manually navigate the options to create a PR from your buggy branch to your main branch. Or just type the following URL in your browser: `https://github.com/<USER>/demo-ci/compare/main...buggy`, where <USER> should be replaced for your GitHub user. You will see the comparison between the differences of both branches, and write a description for your PR.
 
 ![CI Creating a PR](./images/ci-creating-pull-request.png)
-<p align="center">
-    <img width="70%" src="https://user-images.githubusercontent.com/7620947/111704705-5b793a80-881e-11eb-8422-22d51bde6b19.png" />
-</p>
 
 After you create the Pull Request, the job pipeline we defined in GitHub Actions will be triggered. Therefore, GitHub itself will build the system and run the tests (just like it did in Task #1). However, this time the tests will fail, as shown in the figure below.
 
 ![CI Checks Failed](./images/ci-checks-failed.png)
-<p align="center">
-    <img width="70%" src="https://user-images.githubusercontent.com/7620947/111704932-a85d1100-881e-11eb-8d3b-31f34bafa986.png" />
-</p>
 
-**SUMARIZING**: The CI Server managed to automatically warn both the PR author and the integrator that there exists a problem in the submitted code.
+**SUMMARIZING**: The CI Server managed to automatically warn both the PR author and the integrator that there exists a problem in the submitted code.
 
 ## Credits
 
-This guide was conceptualized and originally written by **Rodrigo Brito**, a MSc student in DCC/UFMG in Feb/2020, under the advisement of **Prof. Marco Túlio Valente**. This guide was translated and adapted to English by **Prof. Henrique Rocha**, at Loyola University Maryland, in Nov/2021. 
+This guide was conceptualized and originally written by **Rodrigo Brito**, an MSc student in DCC/UFMG in Feb/2020, under the advisement of **Prof. Marco Túlio Valente**. This guide was translated and adapted to English by **Prof. Henrique Rocha**, at Loyola University Maryland, in Nov/2021. 
