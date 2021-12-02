@@ -170,12 +170,10 @@ git push origin buggy
 
 #### Step 4
 
-Now, create a Pull Request (PR) with your changes. You may click on the Pull Request tab on your GitHub repository and manually navigate the options to create a PR from your buggy branch to your main branch. Or just type the following URL in your browser: 
+Now, create a Pull Request (PR) with your changes. You may click on the Pull Request tab on your GitHub repository and manually navigate the options to create a PR from your buggy branch to your main branch. Or just type the following URL in your browser (where `<USER>` should be replaced by your GitHub user).
 ```bash
 https://github.com/<USER>/demo-ci/compare/main...buggy
-```
-Where <USER> should be replaced for your GitHub user. 
-  
+```  
 You will see the comparison between the differences of both branches, and write a description for your PR.
 
 ![CI Creating a PR](./images/ci-creating-pull-request.png)
