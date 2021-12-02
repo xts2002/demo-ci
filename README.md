@@ -134,7 +134,7 @@ Now lets see our CI server performing in real live action. We will introduce a s
 
 Click on the "Main" dropdown button on top. Type the name of branch on the text field. I called my branch `buggy` (adapt accordingly if you change the name).
 
-![CI-Create-Branch](ci-create-branch.png)
+![CI-Create-Branch](./images/ci-create-branch.png)
 
 You may also create a branch by using the command-line below:
 ```bash
