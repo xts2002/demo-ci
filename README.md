@@ -125,6 +125,7 @@ You may watch over the status of the jobs being executed by clicking on the Acti
 
 ![CI Jobs Inspection](./images/ci-setup-github-actions.png)
 
+
 ## Task #2: Creating a buggy Pull Request
 
 Now lets see our CI server performing in real live action. We will introduce a simple bug in our code example and send a Pull Request. The CI server will alert to the failed tests in our PR and will not automatically integrate it to the main branch.
@@ -133,7 +134,7 @@ Now lets see our CI server performing in real live action. We will introduce a s
 
 Click on the "Main" dropdown button on top. Type the name of branch on the text field. I called my branch `buggy` (adapt accordingly if you change the name).
 
-![CI-Create-Branch]()
+![CI-Create-Branch](ci-create-branch.png)
 
 You may also create a branch by using the command-line below:
 ```bash
@@ -160,7 +161,7 @@ Change the function `addition` in the file [SimpleCalculator.java](./src/main/ja
 
 #### Step 3
 
-If you modified the source file directly in 'buggy' branch editing in the GitHub web interface, then you may skip this step.  
+If you modified the source file directly in 'buggy' branch by using the GitHub web interface, then you may skip this step.  
 Otherwise, we need to commit-push the changed code to the 'buggy' branch. Use a Git Client or the command line:
 
 ```bash
