@@ -66,7 +66,7 @@ Clone the repository into your local machine. You may use a Git Client for it or
 git clone https://github.com/<USER>/demo-ci.git
 ```
 
-Next, copy the code below to a file called `.github/workflows/actions.yaml` (do not forget the *dot* at the beginning).
+Next, go to the folder `.github/workflows/` (the **dot** at the begging means it is invisible on Unix/Mac, so use the GitHub web interface), and rename the empty file to `actions.yaml`. Add the content below to the `actions.yaml` file
 
 ```yaml
 name: Github CI
@@ -130,6 +130,17 @@ Now lets see our CI server performing in real live action. We will introduce a s
 
 #### Step 1
 
+Click on the "Main" dropdown button on top. Type the name of branch on the text field. I called my branch `buggy` (adapt accordingly if you change the name).
+
+![CI-Create-Branch]()
+
+You may also create a branch by using the command-line below:
+```bash
+git checkout -b buggy
+```
+
+#### Step 2
+
 Change the function `addition` in the file [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java) to work incorrectly (i.e., we are introducing a defect on it). For example, we can change line 6, and modify the return to `x + y + 1`, as detailed below.
 
 ```diff
@@ -146,24 +157,29 @@ Change the function `addition` in the file [SimpleCalculator.java](./src/main/ja
    public int subtraction(int x, int y) {
 ```
 
-#### Step 2
+#### Step 3
 
-After modifying the source, we create a new branch and commit-push to it. Use a Git Client or the command line:
+If you modified the source file directly in 'buggy' branch editing in the GitHub web interface, then you may skip this step.  
+Otherwise, we need to commit-push the changed code to the 'buggy' branch. Use a Git Client or the command line:
 
 ```bash
-git checkout -b buggy
-git add --all
 git commit -m "Changing function addition"
 git push origin buggy
 ```
 
-#### Step 3
+#### Step 4
 
-Now, create a Pull Request (PR) with your changes. You may click on the Pull Request tab on your GitHub repository and manually navigate the options to create a PR from your buggy branch to your main branch. Or just type the following URL in your browser: `https://github.com/<USER>/demo-ci/compare/main...buggy`, where <USER> should be replaced for your GitHub user. You will see the comparison between the differences of both branches, and write a description for your PR.
+Now, create a Pull Request (PR) with your changes. You may click on the Pull Request tab on your GitHub repository and manually navigate the options to create a PR from your buggy branch to your main branch. Or just type the following URL in your browser: 
+```bash
+https://github.com/<USER>/demo-ci/compare/main...buggy
+```
+Where <USER> should be replaced for your GitHub user. 
+  
+You will see the comparison between the differences of both branches, and write a description for your PR.
 
 ![CI Creating a PR](./images/ci-creating-pull-request.png)
 
-After you create the Pull Request, the job pipeline we defined in GitHub Actions will be triggered. Therefore, GitHub itself will build the system and run the tests (just like it did in Task #1). However, this time the tests will fail, as shown in the figure below.
+After you create the Pull Request, the job pipeline we defined in GitHub Actions will be triggered. **Do not merge**, wait at least 1 minute and you will see the results. GitHub itself will build the system and run the tests (just like it did in Task #1). However, this time the tests will fail, as shown in the figure below.
 
 ![CI Checks Failed](./images/ci-checks-failed.png)
 
