@@ -1,21 +1,20 @@
-# Demo-CI: Hands-on Lecture on Continuous Integration Server
+# Demo-CI: Hands-on Exercise on Continuous Integration Servers
 
-This repository presents a practical guide to set up and use a **Continous Integration (CI) Server**. The main objective of this guide is to provide students with a simple real first contact with this topic in Software Engineering.
+This repository contains a practical exercise to set up and use a **Continuous Integration (CI) Server**. The main objective is to provide students with a first contact with this important topic in Software Engineering.
 
-For more details on **Continous Integration (CI)**, you may find several tutorials and content by searching the Web. The [Atlassian CI/CD](https://www.atlassian.com/continuous-delivery/continuous-integration) webpage has a good background content on this topic.
+For more details on **Continuous Integration (CI)**, we recommend you to read [Chapter 10](https://softengbook.org/) of our Software Engineering textbook.
 
-Even though there are many different **CI** servers, in this guide, we will use the native **CI** available in GitHub. In **GitHub Actions**, we can configure a CI server.
+Even though there are many CI servers in the market, in this guide, we will use the native CI service provided by GitHub, which is called **GitHub Actions**. This service can be accessed in the top menu of any GitHub repo (see the figure).
 
 ![GitHub Actions](./images/ci-github-actions.png)
 
-GitHub Actions allows us to execute external applications when GitHub detects pre-defined events in a repository. Our goal is to set up a CI server to compile our source code and run the test cases when a Pull Request (PR) is open (as shown in the diagram below). 
+GitHub Actions allows us to execute external applications when GitHub detects pre-defined events in a repository. Our goal is to set up a CI server to compile our source code and run the test cases when a Pull Request (PR) is open (as shown in the following diagram).
 
 ![CI Pull Request Diagram](./images/ci-pull-request-diagram.png)
 
-## Code Example
+## Example
 
-We are going to use a simple Java code as a basis for our CI server. The full source code is available at this repository in the "src" folder, called [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java).
-
+We'll use a simple Java example to llustrate the usage of a CI server. The full code is available in this repository in the "src" folder, and it is called [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java).
 
 ```java
 public class SimpleCalculator {
@@ -30,7 +29,7 @@ public class SimpleCalculator {
   //... and other functions
 }
 ```
-When we create a PR to this repository, the CI server will automatically compile/build this program and run the unit test cases. We also create a simple (and incomplete) test case in this repository called [SimpleCalculatorTest.java](./src/test/java/br/ufmg/dcc/SimpleCalculatorTest.java).
+When we create a PR to this repository, the CI server will automatically compile and build this program and run the unit test cases. We also create a simple (and incomplete) test case in this repository called [SimpleCalculatorTest.java](./src/test/java/br/ufmg/dcc/SimpleCalculatorTest.java).
 
 ```java
 public class SimpleCalculatorTest {
