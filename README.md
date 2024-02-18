@@ -4,11 +4,11 @@ This repository contains a practical exercise to set up and use a **Continuous I
 
 For more details on **Continuous Integration (CI)**, we recommend reading [Chapter 10](https://softengbook.org/) of our Software Engineering textbook.
 
-Even though there are many CI servers in the market, in this exercise, we will use the CI service provided by GitHub, which is called **GitHub Actions**. This service can be accessed in the top menu of any GitHub repo (see the figure).
+Even though there are many CI servers in the market, in this exercise, we will use the CI service provided by GitHub, which is called **GitHub Actions**. This service can be accessed in the top menu of any GitHub repo.
 
 ![GitHub Actions](./images/ci-github-actions.png)
 
-GitHub Actions allows us to execute external applications when GitHub detects some events in a repository. Our goal is to set up a CI server to compile our source code and run the tests when a Pull Request (PR) is open (as shown in the following diagram).
+GitHub Actions allows us to execute external applications when GitHub detects some events in a repository. Our goal is to set up a CI server to compile our source code and run the tests when a Pull Request (PR) is open.
 
 ![CI Pull Request Diagram](./images/ci-pull-request-diagram.png)
 
@@ -26,7 +26,6 @@ public class SimpleCalculator {
   public int subtraction(int x, int y) {
     return x - y;
   }
-  //... and other functions
 }
 ```
 When we submit a PR to this repository, the CI server will automatically compile and build this program and run the following unit test, called [SimpleCalculatorTest.java](./src/test/java/br/ufmg/dcc/SimpleCalculatorTest.java).
@@ -46,7 +45,6 @@ public class SimpleCalculatorTest {
     int result = calc.addition(2,3);
     assertEquals(expected, result);
   }
-  //...
 }
 ```
 
@@ -54,7 +52,7 @@ public class SimpleCalculatorTest {
 
 #### Step 1
 
-The first thing is to fork this repository, by clicking on the **Fork** button on the top right corner of this page. In this way, you will test the CI server into your own copy of the repository.
+Fork this repository, by clicking on the **Fork** button on the top right corner of this page. In this way, you will test the CI server into your own copy of the repository.
 
 #### Step 2
 
@@ -102,11 +100,11 @@ Every time a `push` or `pull_request` event occurs on the `main` branch, this co
 
 - checkout the source code;
 - build the source;
-- execute the testing framework.
+- execute the tests.
 
 #### Step 3
 
-Make a `commit` and a `git push`:
+Commit and push the configuration file:
 
 ```bash
 git add --all
@@ -118,14 +116,14 @@ git push origin main
 
 When the previous `push` reaches the GitHub repository, GitHub Actions will automatically execute the jobs defined in `actions.yaml.
 
-You can also checkout the status of these jobs by clicking on the Actions tab in your repository.
+You can checkout the status of these jobs by clicking on the Actions tab in your repository.
 
 ![CI Jobs Inspection](./images/ci-setup-github-actions.png)
 
 
 ## Task #2: Creating a buggy Pull Request
 
-Now lets see our CI server performing a more real live action. We will introduce a simple bug in our example and submit a PR. Then, the CI server will alert to the failed tests and will not integrate the change to the `main` branch.
+Now let's see our CI server performing a more real live action. We will add a simple bug in our example and submit a PR. Then, the CI server will alert that a test has failed and will not integrate the change.
 
 #### Step 1
 
@@ -147,7 +145,7 @@ Change the function `addition` in [SimpleCalculator.java](./src/main/java/br/ufm
 
 #### Step 2
 
-After modifying the code, you should create a new branch, make a commit, and push:
+Create a new branch, commit, and push:
 
 ```bash
 git checkout -b buggy
@@ -158,7 +156,7 @@ git push origin buggy
 
 #### Step 3
 
-Now, create a PR with your changes. You may click on the Pull Request tab on your GitHub repository and follow the options to create a PR from your buggy branch to your main branch. If you prefer, you can just type the following URL in your browser (where `<USER>` should be replaced by your GitHub user).
+Create a PR with your changes. Click on the Pull Request tab on your GitHub repository and follow the options to create a PR from your buggy branch to your main branch. If you prefer, you can just type the following URL in your browser (where `<USER>` should be replaced by your GitHub user).
 
 ```bash
 https://github.com/<USER>/demo-ci/compare/main...buggy
@@ -168,11 +166,11 @@ You will be presented to the the differences of both branches, and  you should a
 
 ![CI Creating a PR](./images/ci-creating-pull-request.png)
 
-After you create the PR, the job pipeline defined in GitHub Actions will be triggered. **Do not merge**, wait at least 1 minute and you will see the results. GitHub itself will build the system and run the tests (just like it did in Task #1). However, this time the tests will fail, as shown in the figure below.
+After creating the PR, the job pipeline defined in GitHub Actions is triggered. **Do not merge**, wait at least 1 minute and you will see the results. GitHub itself will build the system and run the tests (just like it did in Task #1). However, this time the tests will fail, as shown in this figure.
 
 ![CI Checks Failed](./images/ci-checks-failed.png)
 
-**SUMMARIZING**: The CI Server managed to automatically warn both the PR author and the integrator that there exists a problem in the submitted code.
+**SUMMARIZING**: The CI Server managed to automatically warn both the PR author and the integrator about a problem in the submitted code.
 
 ## Credits
 
