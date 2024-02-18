@@ -66,7 +66,7 @@ Clone the repository into your local machine. You may use a Git Desktop Client o
 git clone https://github.com/<USER>/demo-ci.git
 ```
 
-Next, go to the folder `.github/workflows/`and rename the empty file to `actions.yaml`. Add the content below to the `actions.yaml` file
+Next, go to the folder `.github/workflows/`and rename the `empty.txt` file to `actions.yaml`. Then, add the content below to the `actions.yaml` file
 
 ```yaml
 name: Github CI
