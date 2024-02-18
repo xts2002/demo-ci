@@ -1,20 +1,20 @@
 # Demo-CI: Hands-on Exercise on Continuous Integration Servers
 
-This repository contains a practical exercise to set up and use a **Continuous Integration (CI) Server**. The main objective is to provide students with a first contact with this important topic in Software Engineering.
+This repository contains a practical exercise to set up and use a **Continuous Integration (CI) Server**. The objective is to provide students with a first contact with this important tool when developing software nowadays.
 
-For more details on **Continuous Integration (CI)**, we recommend you to read [Chapter 10](https://softengbook.org/) of our Software Engineering textbook.
+For more details on **Continuous Integration (CI)**, we recommend reading [Chapter 10](https://softengbook.org/) of our Software Engineering textbook.
 
-Even though there are many CI servers in the market, in this exercise, we will use the native CI service provided by GitHub, which is called **GitHub Actions**. This service can be accessed in the top menu of any GitHub repo (see the figure).
+Even though there are many CI servers in the market, in this exercise, we will use the CI service provided by GitHub, which is called **GitHub Actions**. This service can be accessed in the top menu of any GitHub repo (see the figure).
 
 ![GitHub Actions](./images/ci-github-actions.png)
 
-GitHub Actions allows us to execute external applications when GitHub detects some events in a repository. Our goal is to set up a CI server to compile our source code and run the test cases when a Pull Request (PR) is open (as shown in the following diagram).
+GitHub Actions allows us to execute external applications when GitHub detects some events in a repository. Our goal is to set up a CI server to compile our source code and run the tests when a Pull Request (PR) is open (as shown in the following diagram).
 
 ![CI Pull Request Diagram](./images/ci-pull-request-diagram.png)
 
 ## Example
 
-We'll use a simple Java example to llustrate the usage of a CI server. The full code is available in this repository in the "src" folder, and it is called [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java).
+We'll use a simple Java program to llustrate the usage of a CI server. The code is also available in this repository in the "src" folder, and it is called [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java).
 
 ```java
 public class SimpleCalculator {
@@ -29,7 +29,7 @@ public class SimpleCalculator {
   //... and other functions
 }
 ```
-When we submit a PR to this repository, the CI server will automatically compile and build this program and run the unit tests. We also create a simple test case in this repository called [SimpleCalculatorTest.java](./src/test/java/br/ufmg/dcc/SimpleCalculatorTest.java).
+When we submit a PR to this repository, the CI server will automatically compile and build this program and run the following unit test, called [SimpleCalculatorTest.java](./src/test/java/br/ufmg/dcc/SimpleCalculatorTest.java).
 
 ```java
 public class SimpleCalculatorTest {
@@ -54,19 +54,17 @@ public class SimpleCalculatorTest {
 
 #### Step 1
 
-The first thing to do is to fork this repository, by clicking on the **Fork** button on the top right corner of this page.
-
-Therefore, you will test the CI server into your own copy of the repository.
+The first thing is to fork this repository, by clicking on the **Fork** button on the top right corner of this page. In this way, you will test the CI server into your own copy of the repository.
 
 #### Step 2
 
-Clone the repository into your local machine. You may use a Git Desktop Client or the following command line (where `<USER>` should be replaced by your GitHub user).
+Clone the forked repository into your local machine, using the following command line (where `<USER>` should be replaced by your GitHub user).
 
 ```bash
 git clone https://github.com/<USER>/demo-ci.git
 ```
 
-Next, go to the folder `.github/workflows/`and rename the `empty.txt` file to `actions.yaml`. Then, add the content below to the `actions.yaml` file
+Next, go to the folder `.github/workflows/`and create a configuration file called `actions.yaml`, with the following lines:
 
 ```yaml
 name: Github CI
@@ -100,7 +98,7 @@ jobs:
         run: mvn test # Executes the testing framework 
 ```
 
-Every time a `push` or `pull_request` event occurs on this repository `main` branch, this configuration file configures GitHub Actions to:
+Every time a `push` or `pull_request` event occurs on the `main` branch, this configuration file defines that GitHub Actions should:
 
 - checkout the source code;
 - build the source;
@@ -108,7 +106,7 @@ Every time a `push` or `pull_request` event occurs on this repository `main` bra
 
 #### Step 3
 
-Make a `commit` and a `git push`. You may use a Git Client for it, or use the following command line:
+Make a `commit` and a `git push`:
 
 ```bash
 git add --all
@@ -118,20 +116,20 @@ git push origin main
 
 #### Step 4
 
-When your `push` reaches the `main` repository, GitHub Actions will begin to automatically execute the jobs defined in the file `actions.yaml:
+When the previous `push` reaches the GitHub repository, GitHub Actions will automatically execute the jobs defined in `actions.yaml.
 
-You may checkout the status of these jobs by clicking on the Actions tab in your repository.
+You can also checkout the status of these jobs by clicking on the Actions tab in your repository.
 
 ![CI Jobs Inspection](./images/ci-setup-github-actions.png)
 
 
 ## Task #2: Creating a buggy Pull Request
 
-Now lets see our CI server performing in real live action. We will introduce a simple bug in our example and submit a Pull Request. The CI server will alert to the failed tests and will not automatically integrate the PR to the main branch.
+Now lets see our CI server performing a more real live action. We will introduce a simple bug in our example and submit a PR. Then, the CI server will alert to the failed tests and will not integrate the change to the `main` branch.
 
 #### Step 1
 
-Change the function `addition` in the file [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java) to work incorrectly (i.e., we are introducing a bug on it). For example, we can change line 6 to return `x + y + 1`, as detailed below.
+Change the function `addition` in [SimpleCalculator.java](./src/main/java/br/ufmg/dcc/SimpleCalculator.java) to work incorrectly (i.e., introduce a bug on it). For example, you can change line 6 to return `x + y + 1`, as detailed below.
 
 ```diff
 --- a/src/main/java/br/ufmg/dcc/SimpleCalculator.java
@@ -154,19 +152,19 @@ After modifying the code, you should create a new branch, make a commit, and pus
 ```bash
 git checkout -b buggy
 git add --all
-git commit -m "Changing function addition"
+git commit -m "Deliberately introducing a bug in addition"
 git push origin buggy
 ```
 
 #### Step 3
 
-Now, create a Pull Request (PR) with your changes. You may click on the Pull Request tab on your GitHub repository and manually navigate the options to create a PR from your buggy branch to your main branch. Or just type the following URL in your browser (where `<USER>` should be replaced by your GitHub user).
+Now, create a PR with your changes. You may click on the Pull Request tab on your GitHub repository and follow the options to create a PR from your buggy branch to your main branch. If you prefer, you can just type the following URL in your browser (where `<USER>` should be replaced by your GitHub user).
 
 ```bash
 https://github.com/<USER>/demo-ci/compare/main...buggy
 ```  
 
-You will see the comparison between the differences of both branches, and write a description for your PR.
+You will be presented to the the differences of both branches, and  you should also write a description for your PR.
 
 ![CI Creating a PR](./images/ci-creating-pull-request.png)
 
@@ -178,4 +176,4 @@ After you create the PR, the job pipeline defined in GitHub Actions will be trig
 
 ## Credits
 
-This exercise was created by **Rodrigo Brito**, an MSc student in DCC/UFMG in Feb/2020, under the advisement of **Prof. Marco Túlio Valente**. It was translated and adapted to English by **Prof. Henrique Rocha**, at Loyola University Maryland, in Nov/2021. 
+This exercise was created by **Rodrigo Brito**, an MSc student in DCC/UFMG, under the advisement of **Prof. Marco Túlio Valente**. It was translated and adapted to English by **Prof. Henrique Rocha**, at Loyola University Maryland. 
