@@ -2,13 +2,13 @@
 
 This repository contains a practical exercise to set up and use a **Continuous Integration (CI) Server**. The objective is to provide students with a first contact with this important tool when developing software nowadays.
 
-For more details on **Continuous Integration (CI)**, we recommend reading [Chapter 10](https://softengbook.org/) of our Software Engineering textbook.
+For more details on CI, we recommend reading [Chapter 10](https://softengbook.org/) of our Software Engineering textbook.
 
 Even though there are many CI servers in the market, in this exercise, we will use the CI service provided by GitHub, which is called **GitHub Actions**. This service can be accessed in the top menu of any GitHub repo.
 
 ![GitHub Actions](./images/ci-github-actions.png)
 
-GitHub Actions allows us to execute external applications when GitHub detects some events in a repository. Our goal is to set up a CI server to compile our source code and run the tests when a Pull Request (PR) is open.
+GitHub Actions allows us to execute external applications when GitHub detects some events in a repository. Our goal is to set up a CI server to compile and build a simple Java program and then run the tests. This pipeline will be executed every time a Pull Request (PR) is open.
 
 ![CI Pull Request Diagram](./images/ci-pull-request-diagram.png)
 
@@ -56,7 +56,7 @@ Fork this repository, by clicking on the **Fork** button on the top right corner
 
 #### Step 2
 
-Clone the forked repository into your local machine, using the following command line (where `<USER>` should be replaced by your GitHub user).
+Clone the forked repository into your local machine, using the following command (where `<USER>` should be replaced by your GitHub user).
 
 ```bash
 git clone https://github.com/<USER>/demo-ci.git
@@ -114,7 +114,7 @@ git push origin main
 
 #### Step 4
 
-When the previous `push` reaches the GitHub repository, GitHub Actions will automatically execute the jobs defined in `actions.yaml.
+When the previous `push` reaches the GitHub repository, GitHub Actions will automatically execute the jobs defined in `actions.yaml`.
 
 You can checkout the status of these jobs by clicking on the Actions tab in your repository.
 
@@ -161,8 +161,7 @@ Create a PR with your changes. Click on the Pull Request tab on your GitHub repo
 ```bash
 https://github.com/<USER>/demo-ci/compare/main...buggy
 ```  
-
-You will be presented to the the differences of both branches, and  you should also write a description for your PR.
+You will be presented with the differences of both branches, and you should also write a description for your PR.
 
 ![CI Creating a PR](./images/ci-creating-pull-request.png)
 
@@ -170,7 +169,7 @@ After creating the PR, the job pipeline defined in GitHub Actions is triggered. 
 
 ![CI Checks Failed](./images/ci-checks-failed.png)
 
-**SUMMARIZING**: The CI Server managed to automatically warn both the PR author and the integrator about a problem in the submitted code.
+**SUMMARIZING**: The CI server automatically notified both the PR author and the integrator about a problem in the submitted code.
 
 ## Credits
 
